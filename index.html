@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>plan.je - Trip Planner</title>
+    <!-- FAVICON -->
+    <link rel="icon" href="logo-planje.png" type="image/png">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- PRELOAD LOCAL HD BACKGROUNDS -->
+    <link rel="preload" as="image" href="bg1.jpg">
+    <link rel="preload" as="image" href="bg2.jpg">
+    <link rel="preload" as="image" href="bg3.jpg">
+    <link rel="preload" as="image" href="bg4.jpg">
+    
+    <!-- LEAFLET CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <!-- SMOOTH CROSSFADE BACKGROUNDS -->
+    <div class="bg-slider">
+        <div class="slide slide-1"></div>
+        <div class="slide slide-2"></div>
+        <div class="slide slide-3"></div>
+        <div class="slide slide-4"></div>
+    </div>
+    <div class="bg-vignette"></div> 
+
+    <!-- ABSOLUTE NAVBAR (Scrolls away) -->
+    <header style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; position: absolute; top: 0; width: 100%; z-index: 100;">
+        <img src="CodeByInsyi.svg" alt="Code By Insyi" style="height: 40px; cursor: pointer;">
+    </header>
+
+    <!-- CINEMATIC HERO SECTION -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <img src="logo-planje.png" alt="plan.je" class="hero-logo">
+            <button id="btn-get-started" class="btn-hero">Get Started</button>
+        </div>
+    </div>
+
+    <!-- SIDE-BY-SIDE DESKTOP WRAPPER -->
+    <div class="desktop-layout-wrapper">
+        
+        <!-- LEFT COLUMN: MAIN PLANNER FORM -->
+        <div class="container glass-panel" id="planner-container" style="opacity: 0; position: relative; z-index: 10; margin-top: 2rem; margin-bottom: auto;">
+            <h1>Can You Afford This Trip?</h1>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Plan your budget trip across Malaysia in seconds.</p>
+            
+            <form id="trip-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="origin">From</label>
+                        <select id="origin" name="origin" required>
+                            <option value="" disabled selected>Select Origin</option>
+                            <option value="KUL">Kuala Lumpur (W.P.)</option>
+                            <option value="SHA">Shah Alam (Selangor)</option>
+                            <option value="PEN">Penang (Pulau Pinang)</option>
+                            <option value="JHB">Johor Bahru (Johor)</option>
+                            <option value="MKZ">Melaka City (Melaka)</option>
+                            <option value="SBN">Seremban (Negeri Sembilan)</option>
+                            <option value="IPH">Ipoh (Perak)</option>
+                            <option value="KUA">Kuantan (Pahang)</option>
+                            <option value="TGG">Kuala Terengganu (Terengganu)</option>
+                            <option value="KBR">Kota Bharu (Kelantan)</option>
+                            <option value="KAN">Kangar (Perlis)</option>
+                            <option value="LGK">Langkawi (Kedah)</option>
+                            <option value="KCH">Kuching (Sarawak)</option>
+                            <option value="BKI">Kota Kinabalu (Sabah)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="destination">To</label>
+                        <select id="destination" name="destination" required>
+                            <option value="" disabled selected>Select Destination</option>
+                            <option value="KUL">Kuala Lumpur (W.P.)</option>
+                            <option value="SHA">Shah Alam (Selangor)</option>
+                            <option value="PEN">Penang (Pulau Pinang)</option>
+                            <option value="JHB">Johor Bahru (Johor)</option>
+                            <option value="MKZ">Melaka City (Melaka)</option>
+                            <option value="SBN">Seremban (Negeri Sembilan)</option>
+                            <option value="IPH">Ipoh (Perak)</option>
+                            <option value="KUA">Kuantan (Pahang)</option>
+                            <option value="TGG">Kuala Terengganu (Terengganu)</option>
+                            <option value="KBR">Kota Bharu (Kelantan)</option>
+                            <option value="KAN">Kangar (Perlis)</option>
+                            <option value="LGK">Langkawi (Kedah)</option>
+                            <option value="KCH">Kuching (Sarawak)</option>
+                            <option value="BKI">Kota Kinabalu (Sabah)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="start-date">Trip Start Date</label>
+                        <input type="date" id="start-date" name="start-date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="budget">Total Budget (RM)</label>
+                        <input type="number" id="budget" name="budget" min="1" placeholder="e.g. 1500" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="days">Number of Days</label>
+                        <input type="number" id="days" name="days" min="1" value="3" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="travellers">Number of Travellers</label>
+                        <input type="number" id="travellers" name="travellers" min="1" value="1" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="priority">Travel Priority</label>
+                    <select id="priority" name="priority" required>
+                        <option value="cheapest">Cheapest</option>
+                        <option value="fastest">Fastest</option>
+                        <option value="balanced">Balanced</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit" style="width: 100%; padding: 1rem; font-size: 1.1rem; border-radius: 50px; background-color: #E3000F; color: white; border: none; cursor: pointer;">ANALYSE MY TRIP</button>
+            </form>
+        </div>
+
+        <!-- RIGHT COLUMN: RESULTS SECTION -->
+        <div id="results-section" style="display: none; width: 100%;">
+            
+            <!-- 1. BUDGET & TRANSPORT CONTAINER -->
+            <div class="glass-panel">
+                <h3 style="margin-bottom: 1.5rem;">Your Budget Breakdown</h3>
+                
+                <div id="affordability-status" class="status-banner" style="margin-bottom: 1rem; padding: 1rem; border-radius: 8px; font-weight: bold; text-align: center;"></div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                    <div>
+                        <span style="font-size: 0.9rem;">Estimated Cost:</span>
+                        <h2 id="res-est-cost" style="margin: 0; color: #E3000F;">RM 0.00</h2>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-size: 0.9rem;">Balance:</span>
+                        <h2 id="res-balance" style="margin: 0;">RM 0.00</h2>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <label for="interactive-budget" style="font-weight: bold;">Adjust Budget: RM <span id="slider-val"></span></label>
+                    <input type="range" id="interactive-budget" style="width: 100%; margin-top: 0.5rem;">
+                </div>
+
+                <div style="height: 250px; position: relative; margin-bottom: 2rem;">
+                    <canvas id="budgetChart"></canvas>
+                </div>
+
+                <h4 style="margin-bottom: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2);">Select Transport</h4>
+                <div id="transport-options-list" style="display: flex; flex-direction: column; gap: 0.8rem;"></div>
+            </div>
+
+            <!-- 2. ACCOMMODATION CONTAINER -->
+            <div class="glass-panel">
+                <h3 style="margin-bottom: 1.5rem;" Select Your Accommodation</h3>
+                <div class="split-layout" style="display: flex; gap: 1rem; height: 350px;">
+                    <!-- Left: Hotel List -->
+                    <div id="hotel-list" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 0.8rem; padding-right: 0.5rem;"></div>
+                    <!-- Right: Map -->
+                    <div id="map" style="flex: 1; border-radius: 12px; box-shadow: 0 4px 12px rgba(249, 246, 246, 0.1);"></div>
+                </div>
+            </div>
+
+            <!-- 3. FOOD GUIDE CONTAINER -->
+            <div class="glass-panel">
+                <h3 style="margin-bottom: 1.5rem;">🍽️ Local Food Guide</h3>
+                <div id="food-guide-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;"></div>
+            </div>
+
+            <!-- THE BUTTON -->
+            <button id="btn-view-itinerary" class="btn-hero" style="width: 100%; padding: 1rem; font-size: 1.2rem;">VIEW FULL ITINERARY</button>
+        </div>
+    </div> <!-- END DESKTOP LAYOUT WRAPPER -->
+
+    <!-- ITINERARY & PACKING LIST SECTION -->
+    <div id="itinerary-section" class="glass-panel" style="display: none; max-width: 1200px; margin: 2rem auto;">
+        <div style="margin-bottom: 2rem; text-align: center;">
+            <h2 style="font-size: 2rem; color: #E3000F;">Your Day-by-Day Itinerary</h2>
+            <p id="itinerary-subtitle" style="font-size: 1.1rem;"></p>
+        </div>
+        
+        <div id="itinerary-content"></div>
+
+        <!-- SMART PACKING LIST -->
+        <div id="packing-list-container" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2);">
+            <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;"> Your Smart Packing List</h3>
+            
+            <div id="packing-list-content" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                <!-- JS injects the checklist here -->
+            </div>
+
+            <!-- ADD CUSTOM ITEM FORM -->
+            <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2); display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <input type="text" id="custom-item-input" placeholder="E.g. Snacks, Camera..." style="flex: 1; min-width: 200px;">
+                <button type="button" id="btn-add-custom-item" style="background-color: #F5C500; color: white; border: none; padding: 0.5rem 1.2rem; border-radius: 8px; cursor: pointer; font-weight: bold;">+ Add Item</button>
+                <button type="button" id="btn-add-category" style="background-color: #1800AD; color: white; border: none; padding: 0.5rem 1.2rem; border-radius: 8px; cursor: pointer; font-weight: bold;">+ New Category</button>
+            </div>
+        </div>
+
+        <!-- ITINERARY EXPORT BUTTONS -->
+        <div style="display: flex; gap: 1rem; margin-top: 3rem; flex-wrap: wrap;">
+            <button id="btn-download-pdf" style="flex: 1; padding: 1rem; font-size: 1rem;">Download PDF</button>
+            <button id="btn-export-calendar" style="flex: 1; padding: 1rem; font-size: 1rem;">Add to Calendar</button>
+            <button id="btn-close-itinerary" style="flex: 1; padding: 1rem; font-size: 1rem; background-color: white !important;">Close Itinerary</button>
+        </div>
+    </div>
+
+    <!-- External CDNs -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    
+    <!-- Main Script -->
+    <script src="script.js"></script>
+</body>
+</html>

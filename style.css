@@ -1,0 +1,1010 @@
+:root {
+    --primary-color: #E3000F;
+    --primary-hover: #E3000F;
+    --background: #f8fafc ;
+    --card-bg: #ffffff;
+    --text-main: white;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text-main);
+    line-height: 1.5;
+}
+
+.navbar {
+    background-color: var(--card-bg);
+    padding: 1rem 2rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.container {
+    max-width: 750px; /* Made slightly wider to fit the split view perfectly */
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.hero h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+input, select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.875rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 1rem;
+}
+
+.btn-submit:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Status Banner */
+.status-banner {
+    padding: 1.25rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    font-size: 1.15rem;
+}
+.status-success { background-color: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+.status-danger { background-color: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+
+.results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+/* ==================================
+   SPLIT LAYOUT (LIGHT THEME) 
+=================================== */
+.split-layout {
+    display: flex;
+    height: 450px;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.list-panel {
+    width: 45%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border);
+}
+
+.map-panel {
+    width: 55%;
+    height: 100%;
+}
+
+.hotel-card {
+    display: flex;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: var(--text-main);
+}
+
+.hotel-card:hover {
+    background-color: var(--background);
+}
+
+.hotel-card.selected {
+    background-color: #eff6ff; 
+    border-left: 4px solid var(--primary-color);
+}
+
+.hotel-img {
+    width: 100px;
+    height: 75px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-right: 1rem;
+}
+
+.hotel-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hotel-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.hotel-meta {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.hotel-price {
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: var(--text-main);
+    text-align: right;
+    min-width: 60px;
+}
+
+.price-marker {
+    background-color: white;
+    color: var(--text-main);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    border: 2px solid var(--border);
+    text-align: center;
+    white-space: nowrap;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    transition: all 0.2s;
+}
+
+.price-marker.selected-marker {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-hover);
+    z-index: 1000 !important;
+}
+
+/* ==================================
+   ITINERARY TIMELINE & BADGES
+=================================== */
+.itinerary-day {
+    border-left: 3px solid var(--primary-color);
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.itinerary-day::before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: 0;
+    width: 15px;
+    height: 15px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+}
+
+.itinerary-day h4 { color: var(--primary-color); margin-bottom: 1rem; font-size: 1.1rem; }
+
+.activity {
+    background-color: var(--background);
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 0.75rem;
+    border: 1px solid var(--border);
+}
+
+.act-title { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; color: var(--text-main); }
+.act-desc { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+.act-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+
+.badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600; }
+.badge-transport { background-color: #e0e7ff; color: #3730a3; border: 1px solid #c7d2fe; }
+.badge-cost { background-color: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+
+@media (max-width: 768px) {
+    .form-row, .results-grid { flex-direction: column; grid-template-columns: 1fr; gap: 0; }
+    .split-layout { flex-direction: column-reverse; height: 650px; }
+    .list-panel { width: 100%; height: 50%; border-right: none; }
+    .map-panel { width: 100%; height: 50%; border-bottom: 1px solid var(--border); }
+}
+
+/* Map Distance Tooltip */
+.map-distance-label {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    padding: 2px 6px;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.map-distance-label::before { display: none; }
+/* ==================================
+   SMART PACKING LIST (WITH EDIT/DELETE)
+=================================== */
+.packing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.packing-category h4 {
+    font-size: 1rem;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.4rem;
+}
+
+.packing-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Pushes delete button to the right */
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+.packing-item-left {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    flex: 1;
+}
+
+.packing-item-left input[type="checkbox"] {
+    width: 1.1rem;
+    height: 1.1rem;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+/* Strikethrough effect */
+.packing-item:has(input[type="checkbox"]:checked) .packing-item-left {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
+/* Delete Button Styles */
+.btn-delete-item {
+    background: transparent;
+    border: none;
+    color: #ef4444;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.2s;
+    padding: 0 0.5rem;
+}
+
+/* Only show delete button when hovering over the item */
+.packing-item:hover .btn-delete-item {
+    opacity: 1;
+}
+
+#btn-add-custom-item:hover {
+    background-color: #059669; /* Darker green on hover */
+}
+/* ==================================
+   PACKING LIST - EDIT & REARRANGE
+=================================== */
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.4rem;
+}
+
+/* The Magic Editable Title */
+.editable-category-title {
+    font-size: 1rem;
+    color: var(--primary-color);
+    outline: none;
+    flex: 1;
+    margin: 0;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.editable-category-title:hover {
+    background-color: #e0e7ff;
+    cursor: text;
+}
+
+.editable-category-title:focus {
+    background-color: #e0e7ff;
+    border-bottom: 2px dashed var(--primary-color);
+}
+
+/* Up/Down Arrow Buttons */
+.category-controls {
+    display: flex;
+    gap: 0.2rem;
+}
+
+.btn-move {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    opacity: 0.4;
+    transition: opacity 0.2s;
+    padding: 2px;
+}
+
+.btn-move:hover {
+    opacity: 1;
+}
+
+#btn-add-category:hover {
+    background-color: #2563eb;
+}
+/* ==================================
+   WEATHER BADGE
+=================================== */
+.weather-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: #f0fdf4;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+    padding: 0.2rem 0.6rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-left: 1rem;
+    vertical-align: middle;
+}
+
+/* ==================================
+   LOCAL FOOD GUIDE CARDS
+=================================== */
+.food-guide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+}
+
+.food-card {
+    background-color: var(--card-bg);
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.food-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary-color);
+}
+
+.food-icon {
+    font-size: 1.8rem;
+}
+
+.food-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.food-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-main);
+}
+
+.food-price {
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+/* ==================================
+   TRANSPORT SELECTION CARDS
+=================================== */
+.transport-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.transport-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    position: relative;
+}
+
+.transport-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.transport-card.selected {
+    background-color: #eff6ff;
+    border: 2px solid var(--primary-color);
+}
+
+.transport-badge {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    background-color: #f59e0b;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.transport-title {
+    font-weight: bold;
+    color: var(--text-main);
+    font-size: 1.05rem;
+}
+
+.transport-meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.transport-price {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+/* ==================================
+   FOOD IMAGES
+=================================== */
+.food-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.food-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Make the emoji a tiny badge on the image */
+.food-icon-badge {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    background: white;
+    border-radius: 50%;
+    padding: 2px;
+    font-size: 0.8rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* ==================================
+   BOOKING ACTION BUTTONS
+=================================== */
+.btn-book-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 0.5rem;
+    padding: 0.35rem 0.75rem;
+    background-color: var(--primary-color, #2563eb);
+    color: #ffffff !important;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    width: fit-content;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn-book-link:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+/* ==================================
+   CINEMATIC HERO SECTION
+=================================== */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    /* HD Malaysia Scenery (Mount Kinabalu / Nature) */
+    background-image: url('https://images.unsplash.com/photo-1596422846543-75c6fc197f0a?q=80&w=2000&auto=format&fit=crop'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* The Vignette Effect */
+.hero-vignette {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.85) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.hero-logo {
+    max-width: 450px;
+    width: 80%;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+}
+
+.btn-hero {
+    background-color: var(--primary-color, #2563eb);
+    color: white;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.5);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.btn-hero:hover {
+    transform: translateY(-5px) scale(1.05);
+    background-color: #1d4ed8;
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.6);
+}
+
+/* ==================================
+   USER CUSTOM ANIMATION
+=================================== */
+.slide-top {
+    -webkit-animation: slide-top 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-top 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes slide-top {
+    0% { -webkit-transform: translateY(100px); transform: translateY(100px); opacity: 0; }
+    100% { -webkit-transform: translateY(0); transform: translateY(0); opacity: 1; }
+}
+@keyframes slide-top {
+    0% { -webkit-transform: translateY(100px); transform: translateY(100px); opacity: 0; }
+    100% { -webkit-transform: translateY(0); transform: translateY(0); opacity: 1; }
+}
+/* ==================================
+   1. GLOBAL FONT & BASE SETUP
+=================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+body {
+    background: transparent !important;
+    color: #1e293b !important; /* Dark Slate for high contrast readability */
+}
+
+/* ==================================
+   2. SMOOTH CROSSFADE & LIFT BACKGROUND
+=================================== */
+.bg-slider {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -2;
+    background-color: #000; 
+}
+
+.slide {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: fadeAndLift 20s infinite;
+}
+
+.slide-1 { background-image: url('bg1.jpg'); animation-delay: 0s; }
+.slide-2 { background-image: url('bg2.jpg'); animation-delay: 5s; }
+.slide-3 { background-image: url('bg3.jpg'); animation-delay: 10s; }
+.slide-4 { background-image: url('bg4.jpg'); animation-delay: 15s; }
+
+/* Fades in while slowly drifting upwards */
+@keyframes fadeAndLift {
+    0% { opacity: 0; transform: translateY(20px); }
+    5%, 20% { opacity: 1; transform: translateY(0); }
+    25%, 100% { opacity: 0; transform: translateY(-30px); }
+}
+
+.bg-vignette {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -1;
+    background: rgba(15, 23, 42, 0.4); /* Slightly darker to make text readable */
+}
+
+/* ==================================
+   3. MASSIVE LOGO & RED PILL BUTTONS
+=================================== */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5rem !important; /* Forces a wide gap between logo and button */
+}
+
+.hero-logo {
+    max-width: 1100px !important; 
+    width: 100% !important;
+    transform: scale(1.1); 
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.4));
+}
+
+/* Added your form submit button here so "Analyse My Trip" matches! */
+.btn-hero, .btn-book-link, #btn-view-itinerary, #btn-download-pdf, #btn-export-calendar, #trip-form button[type="submit"] {
+    background-color: #E3000F !important;
+    color: #ffffff !important;
+    border-radius: 50px !important;
+    border: none;
+    box-shadow: 0 4px 14px rgba(227, 0, 15, 0.35) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-hero:hover, .btn-book-link:hover, #trip-form button[type="submit"]:hover {
+    background-color: #b9000b !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(227, 0, 15, 0.5) !important;
+}
+
+/* ==================================
+   4. LIGHT GLASSMORPHISM CONTAINERS
+=================================== */
+.container, 
+.results-section, 
+.itinerary-section, 
+.packing-section,
+.packing-category {
+    background: rgba(255, 255, 255, 0.75) !important; /* Frosted White Glass */
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08) !important;
+    border-radius: 20px !important;
+    color: #1e293b !important;
+}
+
+.transport-card, 
+.hotel-card, 
+.food-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.05) !important;
+    border-radius: 14px !important;
+    color: #1e293b !important;
+}
+
+.transport-card:hover,
+.hotel-card:hover,
+.food-card:hover {
+    background: rgba(255, 255, 255, 0.95) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Selected States */
+.transport-card.selected,
+.hotel-card.selected {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border: 2px solid #E3000F !important;
+}
+
+/* ==================================
+   5. LIGHT TYPOGRAPHY & INPUTS
+=================================== */
+h1, h2, h3, h4 {
+    color: #0f172a !important;
+    font-weight: 700;
+}
+
+p, span, label, .transport-meta, .act-desc {
+    color: #334155 !important;
+}
+
+.food-places, .transport-meta {
+    color: #64748b !important;
+}
+
+/* Glass Inputs */
+input, select, textarea {
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #0f172a !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    border-radius: 10px !important;
+    padding: 0.6rem 0.8rem;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #E3000F !important;
+    box-shadow: 0 0 0 3px rgba(227, 0, 15, 0.15) !important;
+}
+
+option {
+    background: #ffffff !important;
+    color: #0f172a !important;
+}
+
+
+/* Remove leftover card backgrounds */
+.card {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+/* ==================================
+   ITINERARY THEME (MATCHES RESULT CONTAINERS)
+=================================== */
+#itinerary-section {
+    background: rgba(255, 255, 255, 0.75) !important;
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08) !important;
+    border-radius: 20px !important;
+    padding: 2rem !important;
+}
+
+/* 1. Force text to be dark and readable */
+#itinerary-section h2, 
+#itinerary-section h3, 
+#itinerary-section h4,
+#itinerary-section p,
+#itinerary-section span {
+    color: #1e293b !important;
+    text-shadow: none !important;
+}
+
+/* 2. Style the activity boxes to match your hotel/transport cards */
+.activity {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-radius: 14px !important;
+    padding: 1.5rem !important;
+    margin-bottom: 1rem !important;
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+.activity strong, 
+.activity .act-title, 
+.activity .act-desc {
+    color: #1e293b !important; /* Dark slate text */
+}
+
+/* Fix the little transport and cost badges */
+.act-meta .badge {
+    color: #1e293b !important;
+    background: rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 3. Make all bottom itinerary buttons rounded */
+#btn-download-pdf, 
+#btn-export-calendar, 
+#btn-close-itinerary {
+    border-radius: 50px !important;
+    border: none !important;
+    font-weight: 600 !important;
+}
+
+/* ==================================
+   MODULAR GLASS PANELS (SEPARATE CONTAINERS)
+=================================== */
+/* 1. Make the main wrapper invisible so panels can separate */
+#results-section, .results-section {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+}
+
+/* 2. Apply the frosted glass to the individual panels */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.75) !important;
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08) !important;
+    border-radius: 20px !important;
+    padding: 2rem !important;
+    margin-bottom: 2rem !important; /* This creates the gap between containers! */
+    color: #1e293b !important;
+}
+
+/* 3. Remove the solid white background from the map/hotel wrapper */
+#hotel-list, #map, .hotel-map-wrapper {
+    background: transparent !important;
+    border: none !important;
+}
+
+/* Ensure map has rounded corners to match the premium theme */
+#map {
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+/* ==================================
+   FIX: REMOVE OLD SOLID BACKGROUNDS
+=================================== */
+/* 1. Remove the giant grey box wrapping the whole right side */
+#results-section {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+}
+
+/* 2. Remove the white box behind the map and hotel list */
+.hotel-map-wrapper, 
+#hotel-list, 
+.map-container {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+/* 3. Ensure the glass panels actually separate */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.75) !important;
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08) !important;
+    border-radius: 20px !important;
+    padding: 2rem !important;
+    margin-bottom: 2rem !important; /* Creates the gap between sections */
+}
+
+/* Fix the hotel card scrolling area so it blends in */
+#hotel-list::-webkit-scrollbar {
+    width: 6px;
+}
+#hotel-list::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+/* ==================================
+   CUSTOM RED BUDGET SLIDER
+=================================== */
+input[type="range"] {
+    accent-color: #E3000F !important; /* Changes the blue line and dot to your signature red */
+    cursor: pointer;
+    height: 6px;
+}
+/* ==================================
+   FIX: ITINERARY INVISIBLE TEXT
+=================================== */
+/* 1. Ensure the activity boxes stay clean and white */
+.activity {
+    background: #ffffff !important; 
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 2. Force the text inside these white boxes to be dark and readable */
+.activity strong, 
+.activity .act-title, 
+.activity .act-desc {
+    color: #0f172a !important; /* Dark slate/black text */
+    text-shadow: none !important; /* Removes any glowing text effects */
+}
+
+/* 3. Fix the little transport and cost badges so they are readable too */
+.act-meta .badge {
+    color: #0f172a !important;
+    background: rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}

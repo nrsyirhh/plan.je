@@ -1,0 +1,74 @@
+{
+  "KUL-PEN": {
+    "distance_km": 350,
+    "options": [
+      { "type": "Flight", "cost_per_pax": 120, "duration_hours": 1 },
+      { "type": "Express Bus", "cost_per_pax": 40, "duration_hours": 5 },
+      { "type": "Train (ETS)", "cost_per_pax": 80, "duration_hours": 4 }
+    ],
+    "daily_living_cost": 140
+  },
+  "KUL-JHB": {
+    "distance_km": 330,
+    "options": [
+      { "type": "Flight", "cost_per_pax": 130, "duration_hours": 1 },
+      { "type": "Express Bus", "cost_per_pax": 35, "duration_hours": 4.5 },
+      { "type": "Train (KTM)", "cost_per_pax": 60, "duration_hours": 5.5 }
+    ],
+    "daily_living_cost": 130
+  },
+  "KUL-MKZ": {
+    "distance_km": 145,
+    "options": [
+      { "type": "Express Bus", "cost_per_pax": 15, "duration_hours": 2 },
+      { "type": "Self-Drive / Car", "cost_per_pax": 35, "duration_hours": 1.8 }
+    ],
+    "daily_living_cost": 125
+  },
+  "KUL-LGK": {
+    "distance_km": 415,
+    "options": [
+      { "type": "Flight", "cost_per_pax": 150, "duration_hours": 1.2 },
+      { "type": "Bus + Ferry", "cost_per_pax": 85, "duration_hours": 8 }
+    ],
+    "daily_living_cost": 160
+  },
+  "KUL-KCH": {
+    "distance_km": 970,
+    "options": [
+      { "type": "Flight", "cost_per_pax": 190, "duration_hours": 1.8 }
+    ],
+    "daily_living_cost": 120
+  },
+  "KUL-BKI": {
+    "distance_km": 1600,
+    "options": [
+      { "type": "Flight", "cost_per_pax": 240, "duration_hours": 2.5 }
+    ],
+    "daily_living_cost": 140
+  },
+  "PEN-MKZ": {
+    "distance_km": 480,
+    "options": [
+      { "type": "Flight", "cost_per_pax": 140, "duration_hours": 1.1 },
+      { "type": "Express Bus", "cost_per_pax": 55, "duration_hours": 7 }
+    ],
+    "daily_living_cost": 125
+  },
+  "PEN-LGK": {
+    "distance_km": 110,
+    "options": [
+      { "type": "Flight", "cost_per_pax": 110, "duration_hours": 0.5 },
+      { "type": "Ferry via Kuala Perlis", "cost_per_pax": 50, "duration_hours": 3.5 }
+    ],
+    "daily_living_cost": 160
+  },
+  "JHB-PEN": {
+    "distance_km": 680,
+    "options": [
+      { "type": "Flight", "cost_per_pax": 160, "duration_hours": 1.2 },
+      { "type": "Express Bus", "cost_per_pax": 75, "duration_hours": 9 }
+    ],
+    "daily_living_cost": 140
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "service": "KTM Komuter Sektor Utara",
+  "effective_date": "2026-07-24",
+  "routes": [
+    {
+      "route_id": "PDB-BWT",
+      "route_name": "Padang Besar - Butterworth",
+      "direction": "southbound",
+      "stations": [
+        "Padang Besar",
+        "Bukit Ketri",
+        "Arau",
+        "Kodiang",
+        "Anak Bukit",
+        "Alor Setar",
+        "Kobah",
+        "Gurun",
+        "Sungai Petani",
+        "Tasek Gelugor",
+        "Bukit Mertajam",
+        "Bukit Tengah",
+        "Butterworth"
+      ],
+      "trips": [
+        {
+          "trip_no": 1,
+          "train_no": "2901",
+          "stops": {
+            "Padang Besar": "05:20",
+            "Bukit Ketri": "05:32",
+            "Arau": "05:39",
+            "Kodiang": "05:45",
+            "Anak Bukit": "05:58",
+            "Alor Setar": "06:03",
+            "Kobah": "06:14",
+            "Gurun": "06:24",
+            "Sungai Petani": "06:37",
+            "Tasek Gelugor": "06:48",
+            "Bukit Mertajam": "07:00",
+            "Bukit Tengah": "07:04",
+            "Butterworth": "07:11"
+          }
+        },
+        {
+          "trip_no": 2,
+          "train_no": "2903",
+          "stops": {
+            "Padang Besar": "05:40",
+            "Bukit Ketri": "05:52",
+            "Arau": "05:59",
+            "Kodiang": "06:05",
+            "Anak Bukit": "06:18",
+            "Alor Setar": "06:23",
+            "Kobah": "06:34",
+            "Gurun": "06:44",
+            "Sungai Petani": "06:57",
+            "Tasek Gelugor": "07:08",
+            "Bukit Mertajam": "07:20",
+            "Bukit Tengah": "07:24",
+            "Butterworth": "07:31"
+          }
+        },
+        {
+          "trip_no": 3,
+          "train_no": "2905",
+          "stops": {
+            "Padang Besar": "06:00",
+            "Bukit Ketri": "06:12",
+            "Arau": "06:19",
+            "Kodiang": "06:25",
+            "Anak Bukit": "06:38",
+            "Alor Setar": "06:43",
+            "Kobah": "06:54",
+            "Gurun": "07:04",
+            "Sungai Petani": "07:17",
+            "Tasek Gelugor": "07:28",
+            "Bukit Mertajam": "07:40",
+            "Bukit Tengah": "07:44",
+            "Butterworth": "07:51"
+          }
+        }
+      ]
+    },
+    {
+      "route_id": "BWT-IPH",
+      "route_name": "Butterworth - Ipoh",
+      "direction": "southbound",
+      "stations": [
+        "Butterworth",
+        "Bukit Tengah",
+        "Bukit Mertajam",
+        "Simpang Ampat",
+        "Nibong Tebal",
+        "Parit Buntar",
+        "Bagan Serai",
+        "Kamunting",
+        "Taiping",
+        "Padang Rengas",
+        "Kuala Kangsar",
+        "Sungai Siput",
+        "Ipoh"
+      ],
+      "trips": [
+        {
+          "trip_no": 1,
+          "train_no": "2801",
+          "stops": {
+            "Butterworth": "05:30",
+            "Bukit Tengah": "05:37",
+            "Bukit Mertajam": "05:41",
+            "Simpang Ampat": "05:49",
+            "Nibong Tebal": "05:57",
+            "Parit Buntar": "06:01",
+            "Bagan Serai": "06:09",
+            "Kamunting": "06:30",
+            "Taiping": "06:34",
+            "Padang Rengas": "06:47",
+            "Kuala Kangsar": "06:53",
+            "Sungai Siput": "07:05",
+            "Ipoh": "07:26"
+          }
+        },
+        {
+          "trip_no": 2,
+          "train_no": "2803",
+          "stops": {
+            "Butterworth": "06:00",
+            "Bukit Tengah": "06:07",
+            "Bukit Mertajam": "06:11",
+            "Simpang Ampat": "06:19",
+            "Nibong Tebal": "06:27",
+            "Parit Buntar": "06:31",
+            "Bagan Serai": "06:44",
+            "Kamunting": "07:05",
+            "Taiping": "07:09",
+            "Padang Rengas": "07:22",
+            "Kuala Kangsar": "07:28",
+            "Sungai Siput": "07:40",
+            "Ipoh": "08:01"
+          }
+        }
+      ]
+    },
+    {
+      "route_id": "IPH-BWT",
+      "route_name": "Ipoh - Butterworth",
+      "direction": "northbound",
+      "stations": [
+        "Ipoh",
+        "Sungai Siput",
+        "Kuala Kangsar",
+        "Padang Rengas",
+        "Taiping",
+        "Kamunting",
+        "Bagan Serai",
+        "Parit Buntar",
+        "Nibong Tebal",
+        "Simpang Ampat",
+        "Bukit Mertajam",
+        "Bukit Tengah",
+        "Butterworth"
+      ],
+      "trips": [
+        {
+          "trip_no": 1,
+          "train_no": "2800",
+          "stops": {
+            "Ipoh": "04:40",
+            "Sungai Siput": "05:01",
+            "Kuala Kangsar": "05:14",
+            "Padang Rengas": "05:20",
+            "Taiping": "05:32",
+            "Kamunting": "05:36",
+            "Bagan Serai": "05:57",
+            "Parit Buntar": "06:05",
+            "Nibong Tebal": "06:09",
+            "Simpang Ampat": "06:17",
+            "Bukit Mertajam": "06:25",
+            "Bukit Tengah": "06:29",
+            "Butterworth": "06:38"
+          }
+        }
+      ]
+    }
+  ]
+}
