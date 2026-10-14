@@ -2,9 +2,6 @@
 
 A web-based trip budget visualization and smart itinerary planner designed for exploring Malaysia. Built with a premium glassmorphism UI, plan.je helps travelers calculate costs, find accommodations, and organize their packing lists in seconds.
 
-## 👨‍💻 Developer
-Developed by Nur Insyirah binti Zaini for hackathon submission.
-
 *   💰 **Dynamic Budget Visualization:** Interactive slider and live pie charts to track expenses across transport, accommodation, food, and activities.
 *   🗺️ **Interactive Accommodation Map:** Integrated map view to select and compare hotels or homestays based on location and price.
 *   🚆 **Smart Route & Transport Selection:** Compare the cheapest, fastest, or most balanced travel options (Bus, Train, Flight, e-hailing).
@@ -12,6 +9,9 @@ Developed by Nur Insyirah binti Zaini for hackathon submission.
 *   🎒 **Customizable Packing List:** A smart, interactive checklist where users can add, delete, and categorize essential travel items.
 *   📥 **Seamless Exports:** Download your full itinerary and budget breakdown as a PDF, or export it directly to your calendar.
 *   🎨 **Premium UI/UX:** Smooth cinematic background crossfades, responsive glassmorphism containers, and intuitive navigation.
+
+## 👨‍💻 Developer
+Developed by Nur Insyirah binti Zaini for hackathon submission.
 
 ## 🛠️ Tech Stack
 
