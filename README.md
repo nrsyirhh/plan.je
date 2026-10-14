@@ -1,7 +1,6 @@
 # 🗺️ plan.je
 
 A web-based trip budget visualization and smart itinerary planner designed for exploring Malaysia. Built with a premium glassmorphism UI, plan.je helps travelers calculate costs, find accommodations, and organize their packing lists in seconds.
-## 🚀 Getting Started
 
 ## 👨‍💻 Developer
 Developed by Nur Insyirah binti Zaini for hackathon submission.
